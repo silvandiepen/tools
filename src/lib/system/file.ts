@@ -23,6 +23,11 @@ export const getFileData = async (filePath: string): Promise<string> => {
   }
 };
 
+export const getJsonData = async (filePath: string): Promise<{}> => {
+  const data = await getFileData(filePath);
+  return JSON.parse(data);
+};
+
 export const download = async (
   url: string,
   destination: string
