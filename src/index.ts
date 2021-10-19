@@ -1,2 +1,2 @@
 export * from "./lib/strings";
-export * from "./lib/filesystem";
+export * from "./lib/system";
