@@ -10,3 +10,9 @@ export async function asyncForEach<T>(
 export const hello = async (args: unknown = {}): Promise<unknown> => {
   return args;
 };
+
+export const promisify = async (func: any) => {
+  await Promise.resolve(func).then(function () {
+    return;
+  });
+};
