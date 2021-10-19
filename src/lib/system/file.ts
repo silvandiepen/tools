@@ -1,6 +1,6 @@
 import { dirname } from "path";
 import https from "https";
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 import { createWriteStream, existsSync } from "fs";
 const { mkdir, readFile } = require("fs").promises;
 
