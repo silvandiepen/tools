@@ -1,7 +1,7 @@
 import { dirname } from "path";
-import https from "https";
-const fetch = require("node-fetch");
 import { createWriteStream, existsSync } from "fs";
+import https from "https";
+import fetch from "node-fetch";
 const { mkdir, readFile } = require("fs").promises;
 
 import { DownloadResponse } from "./file.model";
@@ -16,7 +16,8 @@ export const createDir = async (dir: string): Promise<void> => {
 
 export const getFileData = async (filePath: string): Promise<string> => {
   try {
-    return await readFile(filePath).then((res: any) => res.toString());
+    const file = await readFile(filePath).then((res: any) => res.toString());
+    return filePath.includes(".json") ? JSON.parse(file) : file;
   } catch (err: any) {
     throw Error(err);
   }

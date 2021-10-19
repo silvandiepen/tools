@@ -25,10 +25,9 @@
   "homepage": "https://github.com/silvandiepen/tools#readme",
   "devDependencies": {
     "@types/node": "^16.11.1",
-    "@types/node-fetch": "^3.0.3",
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "node-fetch": "^2.6.5"
+    "node-fetch": "^3.0.0"
   }
 }
