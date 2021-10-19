@@ -9,3 +9,24 @@ export const getStringFromTag = (input: string, tag: string): string[] => {
   if (!matches) return [];
   return matches;
 };
+
+export const getIndexes = (source: string, find: string): number[] => {
+  const result = [];
+  let i = 0;
+
+  while (i < source.length) {
+    if (source.substring(i, i + find.length) === find) {
+      result.push(i);
+      i += find.length;
+    } else {
+      i++;
+    }
+  }
+
+  return result;
+};
+
+export const nthIndex = (source: string, find: string, nth: number): number => {
+  const result = getIndexes(source, find);
+  return result[nth];
+};
