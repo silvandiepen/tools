@@ -1,10 +1,11 @@
-import { dirname } from "path";
-import { createWriteStream, existsSync } from "fs";
+// import { dirname } from "path";
+// import { createWriteStream, existsSync } from "fs";
+import { existsSync } from "fs";
 import https from "https";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 const { mkdir, readFile } = require("fs").promises;
 
-import { DownloadResponse } from "./file.model";
+// import { DownloadResponse } from "./file.model";
 
 export const createDir = async (dir: string): Promise<void> => {
   try {
@@ -28,24 +29,24 @@ export const getJsonData = async (filePath: string): Promise<{}> => {
   return JSON.parse(data);
 };
 
-export const download = async (
-  url: string,
-  destination: string
-): Promise<void> => {
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-  const res: DownloadResponse = await fetch(url, { agent });
-  await createDir(dirname(destination));
-  await new Promise((resolve, reject) => {
-    const fileStream = createWriteStream(destination);
-    res.body?.pipe(fileStream);
-    res.body?.on("error", (err: any) => {
-      reject(err);
-    });
-    fileStream.on("finish", () => {
-      //@ts-ignore: Resolve has to be resolved some how
-      resolve();
-    });
-  });
-};
+// export const download = async (
+//   url: string,
+//   destination: string
+// ): Promise<void> => {
+//   const agent = new https.Agent({
+//     rejectUnauthorized: false,
+//   });
+//   const res: DownloadResponse = await fetch(url, { agent });
+//   await createDir(dirname(destination));
+//   await new Promise((resolve, reject) => {
+//     const fileStream = createWriteStream(destination);
+//     res.body?.pipe(fileStream);
+//     res.body?.on("error", (err: any) => {
+//       reject(err);
+//     });
+//     fileStream.on("finish", () => {
+//       //@ts-ignore: Resolve has to be resolved some how
+//       resolve();
+//     });
+//   });
+// };
