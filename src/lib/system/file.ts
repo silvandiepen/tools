@@ -1,9 +1,12 @@
 // import { dirname } from "path";
 // import { createWriteStream, existsSync } from "fs";
 import { existsSync } from "fs";
-import https from "https";
+import { dirname, join } from "path";
+// import https from "https";
 // import fetch from "node-fetch";
-const { mkdir, readFile } = require("fs").promises;
+import { asyncEvery, asyncSome } from "../async";
+const { mkdir, readFile, access, writeFile, R_OK, F_OK, W_OK } =
+  require("fs").promises;
 
 // import { DownloadResponse } from "./file.model";
 
@@ -50,3 +53,36 @@ export const getJsonData = async (filePath: string): Promise<{}> => {
 //     });
 //   });
 // };
+
+export const fileExists = async (path: string): Promise<boolean> => {
+  try {
+    await access(join(__dirname, path), R_OK | W_OK | F_OK);
+    console.log("file exists");
+    return true;
+  } catch {
+    console.log("file doesnt exist");
+    return false;
+  }
+};
+
+export const filesExist = async (
+  paths: string[],
+  some = false
+): Promise<boolean> => {
+  const action = some ? asyncSome : asyncEvery;
+
+  try {
+    const result = await action(
+      paths,
+      async (file: string) => await fileExists(file)
+    );
+    return result;
+  } catch (err) {
+    return false;
+  }
+};
+
+export const createFile = async (dest: string, data: string): Promise<void> => {
+  await mkdir(dirname(dest), { recursive: true });
+  await writeFile(dest, data);
+};

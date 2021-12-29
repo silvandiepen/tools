@@ -16,3 +16,12 @@ export const promisify = async (func: any) => {
     return;
   });
 };
+
+export const asyncFilter = async (arr: any[], predicate: any) => {
+  const results = await Promise.all(arr.map(predicate));
+  return arr.filter((_v, index) => results[index]);
+};
+export const asyncSome = async (arr: any[], predicate: any) =>
+  (await asyncFilter(arr, predicate)).length > 0;
+export const asyncEvery = async (arr: any[], predicate: any) =>
+  (await asyncFilter(arr, predicate)).length === arr.length;
