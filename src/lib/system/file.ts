@@ -57,10 +57,8 @@ export const getJsonData = async (filePath: string): Promise<{}> => {
 export const fileExists = async (path: string): Promise<boolean> => {
   try {
     await access(path, R_OK | W_OK | F_OK);
-    console.log("file exists");
     return true;
   } catch {
-    console.log("file doesnt exist");
     return false;
   }
 };
