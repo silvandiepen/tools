@@ -1,7 +1,7 @@
 // import { dirname } from "path";
 // import { createWriteStream, existsSync } from "fs";
 import { existsSync } from "fs";
-import { dirname, join } from "path";
+import { dirname } from "path";
 // import https from "https";
 // import fetch from "node-fetch";
 import { asyncEvery, asyncSome } from "../async";
@@ -56,7 +56,7 @@ export const getJsonData = async (filePath: string): Promise<{}> => {
 
 export const fileExists = async (path: string): Promise<boolean> => {
   try {
-    await access(join(__dirname, path), R_OK | W_OK | F_OK);
+    await access(path, R_OK | W_OK | F_OK);
     console.log("file exists");
     return true;
   } catch {
