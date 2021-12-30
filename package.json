@@ -1,6 +1,6 @@
 {
   "name": "@sil/tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sil's Toolbelt",
   "main": "dist/index.js",
   "scripts": {
