@@ -4,7 +4,7 @@
   "description": "Sil's Toolbelt",
   "main": "dist/index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "build": "tsc",
     "dev": "tsc -w"
   },
@@ -24,7 +24,16 @@
   },
   "homepage": "https://github.com/silvandiepen/tools#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.0",
     "@types/node": "^16.11.1",
+    "babel-jest": "^27.4.6",
+    "ts-jest": "^27.1.2",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "jest": "^27.4.7"
   }
 }
