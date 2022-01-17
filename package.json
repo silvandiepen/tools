@@ -3,6 +3,11 @@
   "version": "0.1.8",
   "description": "Sil's Toolbelt",
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./node": "./dist/lib/system.js",
+    "./color": "./dist/lib/color.js"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
