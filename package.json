@@ -5,8 +5,11 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
+    "./*": "./dist/*.js",
     "./node": "./dist/lib/system/index.js",
-    "./color": "./dist/lib/color/index.js"
+    "./node/*": "./dist/lib/system/*.js",
+    "./color": "./dist/lib/color/index.js",
+    "./color/*": "./dist/lib/color/*.js"
   },
   "scripts": {
     "test": "jest",
