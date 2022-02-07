@@ -1,14 +1,8 @@
-// import { dirname } from "path";
-// import { createWriteStream, existsSync } from "fs";
 import { existsSync } from "fs";
 import { dirname } from "path";
-// import https from "https";
-// import fetch from "node-fetch";
-import { asyncEvery, asyncSome } from "../async";
+import { asyncEvery, asyncSome } from "../default/async";
 const { mkdir, readFile, access, writeFile, R_OK, F_OK, W_OK } =
   require("fs").promises;
-
-// import { DownloadResponse } from "./file.model";
 
 export const createDir = async (dir: string): Promise<void> => {
   try {
@@ -31,28 +25,6 @@ export const getJsonData = async (filePath: string): Promise<{}> => {
   const data = await getFileData(filePath);
   return JSON.parse(data);
 };
-
-// export const download = async (
-//   url: string,
-//   destination: string
-// ): Promise<void> => {
-//   const agent = new https.Agent({
-//     rejectUnauthorized: false,
-//   });
-//   const res: DownloadResponse = await fetch(url, { agent });
-//   await createDir(dirname(destination));
-//   await new Promise((resolve, reject) => {
-//     const fileStream = createWriteStream(destination);
-//     res.body?.pipe(fileStream);
-//     res.body?.on("error", (err: any) => {
-//       reject(err);
-//     });
-//     fileStream.on("finish", () => {
-//       //@ts-ignore: Resolve has to be resolved some how
-//       resolve();
-//     });
-//   });
-// };
 
 export const fileExists = async (path: string): Promise<boolean> => {
   try {

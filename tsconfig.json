@@ -1,18 +1,20 @@
 {
-  "compilerOptions": {
-    "target": "es5",                                     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+  "compilerOptions": { 
+    "target": "es2019",
+    "lib": [
+      "es2019"
+    ],                           
+    "module": "commonjs",                              
+    "rootDir": "./src",                                
+    "outDir": "./dist",      
 
-    "module": "commonjs",                                /* Specify what module code is generated. */
-    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
-    "resolveJsonModule": true,                        /* Enable importing .json files */
 
-    "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
-    "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
-    "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
-    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
-    "removeComments": true,                           /* Disable emitting comments. */
+    "declaration": true,                             
+    "declarationMap": true,                         
+    "sourceMap": true,                                   
+    "removeComments": true,                          
 
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "esModuleInterop": true,                            
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
 
     "strict": true,                                      /* Enable all strict type-checking options. */
