@@ -1,6 +1,6 @@
 import { existsSync } from "fs";
 import { dirname } from "path";
-import { asyncEvery, asyncSome } from "../default/async";
+import { asyncEvery, asyncForEach, asyncSome } from "../default/async";
 const { mkdir, readFile, access, writeFile, R_OK, F_OK, W_OK } =
   require("fs").promises;
 
@@ -50,6 +50,15 @@ export const filesExist = async (
   } catch (err) {
     return false;
   }
+};
+
+export const existingFiles = async (paths: string[]): Promise<string[]> => {
+  const existingPaths: string[] = [];
+  await asyncForEach(paths, async (path) => {
+    const exists = await fileExists(path);
+    if (exists) existingPaths.push(path);
+  });
+  return existingPaths;
 };
 
 export const createFile = async (dest: string, data: string): Promise<void> => {

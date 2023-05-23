@@ -5,9 +5,8 @@
       "es2019"
     ],                           
     "module": "commonjs",                              
-    "rootDir": "./src",                                
+    "rootDir": "",                                
     "outDir": "./dist",      
-
 
     "declaration": true,                             
     "declarationMap": true,                         
